@@ -6,8 +6,8 @@
              version="2.2">
 
     <persistence-unit name="libraryCooking" transaction-type="RESOURCE_LOCAL">
-        <class>hr.java.hibernate.jpa.demo.introduction.model.Book</class>
-        <class>hr.java.hibernate.jpa.demo.introduction.model.Author</class>
+        <class>hr.java.hibernate.jpa.cooking.model.Meal</class>
+        <class>hr.java.hibernate.jpa.cooking.model.Ingredient</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

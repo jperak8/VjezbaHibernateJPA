@@ -36,16 +36,18 @@ public class Main {
         meal1.setIngredients(ingredients);
         em.persist(meal1);
 
+        Ingredient ingredientFish1 = new Ingredient("Paprika");
+        Ingredient ingredientFish2 = new Ingredient("Luk");
         Ingredient ingredientFish3 = new Ingredient("Šaran");
         Ingredient ingredientFish4 = new Ingredient("Štuka");
         Ingredient ingredientFish5 = new Ingredient("Smuđ");
 
         List<Ingredient> ingredientsFish = new ArrayList<>();
-        ingredients.add(ingredient1);
-        ingredients.add(ingredient2);
-        ingredients.add(ingredientFish3);
-        ingredients.add(ingredientFish4);
-        ingredients.add(ingredientFish5);
+        ingredientsFish.add(ingredientFish1);
+        ingredientsFish.add(ingredientFish2);
+        ingredientsFish.add(ingredientFish3);
+        ingredientsFish.add(ingredientFish4);
+        ingredientsFish.add(ingredientFish5);
 
         Meal meal2 = new Meal();
         meal2.setName("Fiš");
@@ -53,11 +55,19 @@ public class Main {
         em.persist(meal2);
 
         List<Meal> meals = em.createQuery("SELECT b FROM Meal b", Meal.class).getResultList();
-        ingredients = em.createQuery("SELECT b FROM Ingredient b", Ingredient.class).getResultList();
+        List<Ingredient> allIngredients = em.createQuery("SELECT b FROM Ingredient b", Ingredient.class).getResultList();
 
         for (Meal meal : meals) {
-            System.out.println("Meal: " + meal.getName() + " ima sastojke: " + meal1.getIngredients().toString());
+            System.out.println("\nMeal: " + meal.getName());
+            for (Ingredient ingredient : meal.getIngredients()) {
+                System.out.println("Ingredients: " + ingredient.getName());
+            }
         }
+
+        //tx.commit();
+
+        em.close();
+        emf.close();
 
     }
 }
