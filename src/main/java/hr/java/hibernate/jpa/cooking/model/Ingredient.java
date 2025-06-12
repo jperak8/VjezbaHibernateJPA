@@ -17,11 +17,7 @@ public class Ingredient {
         this.name = name;
     }
 
-    @JoinTable(
-            name = "meal_ingredient",
-            joinColumns = @JoinColumn(name = "ingredient_id"),
-            inverseJoinColumns = @JoinColumn(name = "meal_id")
-    )
+    @JoinColumn(name = "meal_id")
 
     public Long getId() {
         return id;
