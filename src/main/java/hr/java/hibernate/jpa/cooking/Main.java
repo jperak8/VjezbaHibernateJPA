@@ -64,7 +64,7 @@ public class Main {
             }
         }
 
-        tx.commit();
+        //tx.commit();
 
         em.close();
         emf.close();
